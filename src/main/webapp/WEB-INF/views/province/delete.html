@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Delete Province</h1>
+    <p><a th:href="@{/provinces}">Back to province list</a></p>
+    <form th:action="@{/provinces/delete}" method="post" th:object="${province}">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Tên</label>
+            <input type="text" class="form-control" id="firstName" th:field="*{name}"disabled>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
