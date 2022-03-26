@@ -11,6 +11,12 @@
 <div class="container">
     <a th:href="@{/customers/create}">Create new customer</a>
     <h1>Customer List</h1>
+    <form>
+        Search by first name:
+        <input name="search" type="text">
+        <button>Search</button>
+    </form>
+    <br/>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -36,6 +42,11 @@
         </th:block>
         </tbody>
     </table>
+    <div>
+        <a th:href="@{'/customers'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+        <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+        <a th:href="@{'/customers'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+    </div>
 </div>
 </body>
 </html>

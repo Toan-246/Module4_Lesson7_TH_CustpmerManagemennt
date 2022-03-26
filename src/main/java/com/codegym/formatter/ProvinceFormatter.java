@@ -1,5 +1,4 @@
 package com.codegym.formatter;
-
 import com.codegym.model.Province;
 import com.codegym.service.provice.IProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +10,19 @@ import java.util.Locale;
 import java.util.Optional;
 
 @Component
-public class ProvinceFormatter implements Formatter <Province> {
-    @Autowired
+public class ProvinceFormatter implements Formatter<Province> {
+
     private IProvinceService provinceService;
 
-
+    @Autowired
     public ProvinceFormatter(IProvinceService provinceService) {
         this.provinceService = provinceService;
     }
 
     @Override
-    public Province parse(String id, Locale locale) throws ParseException {
-        Optional<Province> provinceOptional =  provinceService.findById(Long.parseLong(id));
+    public Province parse(String text, Locale locale) throws ParseException {
+        Optional<Province> provinceOptional = provinceService.findById(Long.parseLong(text));
         return provinceOptional.orElse(null);
-//        return provinceService.findById(Long.parseLong(id));
     }
 
     @Override
